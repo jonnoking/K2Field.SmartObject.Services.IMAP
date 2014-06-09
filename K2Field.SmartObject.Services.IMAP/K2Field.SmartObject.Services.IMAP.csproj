@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AE.Net.Mail">
-      <HintPath>..\..\aenetmail\bin\Debug\AE.Net.Mail.dll</HintPath>
+      <HintPath>..\libs\AE.Net.Mail.dll</HintPath>
     </Reference>
     <Reference Include="SourceCode.SmartObjects.Services.ServiceSDK, Version=4.0.0.0, Culture=neutral, PublicKeyToken=16a2c5aaaa1b130d, processorArchitecture=MSIL">
       <HintPath>..\libs\SourceCode.SmartObjects.Services.ServiceSDK.dll</HintPath>

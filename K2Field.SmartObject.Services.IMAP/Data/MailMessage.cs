@@ -267,6 +267,9 @@ namespace K2Field.SmartObject.Services.IMAP.Data
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("mailbox")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("headersonly")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("setseen")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("startindex")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("numberofmessages")).FirstOrDefault());
+
 
             foreach (Property prop in MessageProps)
             {
@@ -339,6 +342,8 @@ namespace K2Field.SmartObject.Services.IMAP.Data
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("headersonly")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("setseen")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("subjectfilter")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("startindex")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("numberofmessages")).FirstOrDefault());
 
             foreach (Property prop in MessageProps)
             {
@@ -373,6 +378,8 @@ namespace K2Field.SmartObject.Services.IMAP.Data
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("headersonly")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("setseen")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("subjectfilter")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("startindex")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("numberofmessages")).FirstOrDefault());
 
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("uid")).FirstOrDefault());
            
@@ -402,6 +409,8 @@ namespace K2Field.SmartObject.Services.IMAP.Data
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("headersonly")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("setseen")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("bodyfilter")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("startindex")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("numberofmessages")).FirstOrDefault());
 
             foreach (Property prop in MessageProps)
             {
@@ -436,6 +445,8 @@ namespace K2Field.SmartObject.Services.IMAP.Data
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("headersonly")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("setseen")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("bodyfilter")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("startindex")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("numberofmessages")).FirstOrDefault());
 
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("uid")).FirstOrDefault());
 
@@ -458,13 +469,15 @@ namespace K2Field.SmartObject.Services.IMAP.Data
             method.InputProperties.Add(AllProps.Where(p => p.Name.Equals("setseen")).FirstOrDefault());
             method.Validation.RequiredProperties.Add(method.InputProperties[2]);
 
-            method.InputProperties.Add(AllProps.Where(p => p.Name.Equals("from")).FirstOrDefault());
+            method.InputProperties.Add(AllProps.Where(p => p.Name.Equals("fromfilter")).FirstOrDefault());
             method.Validation.RequiredProperties.Add(method.InputProperties[3]);
 
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("mailbox")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("headersonly")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("setseen")).FirstOrDefault());
-            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("from")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("fromfilter")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("startindex")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("numberofmessages")).FirstOrDefault());
 
             foreach (Property prop in MessageProps)
             {
@@ -492,13 +505,15 @@ namespace K2Field.SmartObject.Services.IMAP.Data
             method.InputProperties.Add(AllProps.Where(p => p.Name.Equals("setseen")).FirstOrDefault());
             method.Validation.RequiredProperties.Add(method.InputProperties[2]);
 
-            method.InputProperties.Add(AllProps.Where(p => p.Name.Equals("from")).FirstOrDefault());
+            method.InputProperties.Add(AllProps.Where(p => p.Name.Equals("fromfilter")).FirstOrDefault());
             method.Validation.RequiredProperties.Add(method.InputProperties[3]);
 
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("mailbox")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("headersonly")).FirstOrDefault());
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("setseen")).FirstOrDefault());
-            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("from")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("fromfilter")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("startindex")).FirstOrDefault());
+            method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("numberofmessages")).FirstOrDefault());
 
             method.ReturnProperties.Add(AllProps.Where(p => p.Name.Equals("uid")).FirstOrDefault()); 
             
@@ -640,7 +655,7 @@ namespace K2Field.SmartObject.Services.IMAP.Data
 
                     if (isLazy)
                     {
-                        foreach (System.Lazy<AE.Net.Mail.MailMessage> msg in mm.OrderByDescending(p => p.Value.Date))
+                        foreach (System.Lazy<AE.Net.Mail.MailMessage> msg in mm)
                         {
                             AE.Net.Mail.MailMessage mmsg = msg.Value;
                             dr = serviceBroker.ServicePackage.ResultTable.NewRow();
@@ -650,9 +665,21 @@ namespace K2Field.SmartObject.Services.IMAP.Data
                             dr["mailbox"] = mailbox;
                             dr["headersonly"] = headersonly;
                             dr["setseen"] = setseen;
-                            dr["fromfilter"] = fromfilter;
-                            dr["subjectfilter"] = subjectfilter;
-                            dr["bodyfilter"] = bodyfilter;
+
+                            switch (serviceObject.Methods[0].Name.ToLower())
+                            {
+                                case "searchmessagesbysubject":
+                                    dr["subjectfilter"] = subjectfilter;
+                                    break;
+                                case "searchmessagesbybody":
+                                    dr["bodyfilter"] = bodyfilter;
+                                    break;
+                                case "searchmessagesbyfrom":
+                                    dr["fromfilter"] = fromfilter;
+                                    break;
+                            }
+
+
                             dr["startindex"] = startindex;
                             dr["numberofmessages"] = numberofmessages;
 
@@ -671,9 +698,18 @@ namespace K2Field.SmartObject.Services.IMAP.Data
                             dr["mailbox"] = mailbox;
                             dr["headersonly"] = headersonly;
                             dr["setseen"] = setseen;
-                            dr["fromfilter"] = fromfilter;
-                            dr["subjectfilter"] = subjectfilter;
-                            dr["bodyfilter"] = bodyfilter;
+                            switch (serviceObject.Methods[0].Name.ToLower())
+                            {
+                                case "searchmessagesbysubject":
+                                    dr["subjectfilter"] = subjectfilter;
+                                    break;
+                                case "searchmessagesbybody":
+                                    dr["bodyfilter"] = bodyfilter;
+                                    break;
+                                case "searchmessagesbyfrom":
+                                    dr["fromfilter"] = fromfilter;
+                                    break;
+                            }
                             dr["startindex"] = startindex;
                             dr["numberofmessages"] = numberofmessages;
 

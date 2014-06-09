@@ -127,8 +127,8 @@ namespace K2Field.SmartObject.Services.IMAP.Data
             mailmessageServiceObject.Create();
 
             //Attachment
-            MailAttachment mailAttachmentServiceObject = new MailAttachment(serviceBroker);
-            mailAttachmentServiceObject.Create();
+            //MailAttachment mailAttachmentServiceObject = new MailAttachment(serviceBroker);
+            //mailAttachmentServiceObject.Create();
 
 
                 //if (!serviceBroker.Service.ServiceObjects.Contains(obj))
